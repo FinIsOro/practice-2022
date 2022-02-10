@@ -1,30 +1,16 @@
+<script lang="ts" setup>
+import Scroller from '@/components/Scroller'
+import Flex from '@/components/Flex'
+import Icon from '@/components/Icon'
+</script>
+
+
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <Scroller y="auto">
+    <Flex class="d-flex min-w-100 min-h-100" gap="5rem" dir="row" wrap="nowrap" align="center" justify="center">
+      <Icon id="message" size="1rem" />
+      <Icon id="location" size="1.5rem" />
+      <Icon id="calendar" size="10rem" />
+    </Flex>
+  </Scroller>
 </template>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
