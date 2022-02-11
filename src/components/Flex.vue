@@ -10,7 +10,7 @@ interface Props {
   justify: CSS.JustifyContentProperty
 }
 
-const { dir, wrap, gap } = withDefaults(defineProps<Props>(), {
+const { dir, wrap, gap, align, justify } = withDefaults(defineProps<Props>(), {
   dir: 'row',
   wrap: 'unset',
   gap: 0,

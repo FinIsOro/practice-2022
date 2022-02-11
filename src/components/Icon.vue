@@ -4,14 +4,20 @@ import { $mc } from '@/utils/style'
 
 interface Props {
   id: string
-  size: CSS.WidthProperty<string | number> & CSS.HeightProperty<string | number>
+  size: string | number
+  variant: string
 }
 
-const { id, size } = defineProps<Props>()
+const { id, size, variant } = withDefaults(defineProps<Props>(), {
+  variant: '',
+})
 </script>
 
 <template>
-  <svg :class="$mc('root')">
+  <svg :class="[
+    ...$mc('root'),
+    { [`icon-${variant}`]: variant.length != '' },
+  ]">
     <use :href="`${require('@/assets/icons.svg')}#${id}`"></use>
   </svg>
 </template>

@@ -1,0 +1,7 @@
+@mixin icon-colors($colors...) {
+  @for $index from 1 through length($colors) {
+    $color: nth($colors, $index);
+
+    --icon-color-#{$index}: #{$color};
+  }
+}

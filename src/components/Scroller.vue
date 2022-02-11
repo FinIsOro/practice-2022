@@ -3,8 +3,8 @@ import * as CSS from 'csstype'
 import { $mc } from '@/utils/style'
 
 interface Props {
-  x: CSS.OverflowXProperty,
-  y: CSS.OverflowYProperty,
+  x?: CSS.OverflowXProperty,
+  y?: CSS.OverflowYProperty,
 }
 
 const { x, y } = withDefaults(defineProps<Props>(), {
@@ -26,5 +26,20 @@ const { x, y } = withDefaults(defineProps<Props>(), {
 
   overflow-x: v-bind(x);
   overflow-y: v-bind(y);
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 1rem;
+    background: rgba(23, 26, 37, 0.25);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background: #283E6F;
+  }
 }
 </style>

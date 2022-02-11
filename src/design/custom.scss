@@ -1,0 +1,31 @@
+// Colors
+@each $name, $value in $colors {
+  $color: color($name);
+  
+  .c-#{$name} {
+    color: $color !important;
+  }
+
+  .bg-#{$name} {
+    background-color: $color !important;
+  }
+
+  .btn.btn-#{$name} {
+    @include button-variant(
+      $value,
+      transparent,
+    );
+
+    &:focus:not(:active):not(:hover) {
+      background-color: $color;
+    }
+  }
+
+  .icon-#{$name} {
+    @include icon-colors($color);
+  }
+
+  .border-#{$name} {
+    border-color: $color !important;
+  }
+}
