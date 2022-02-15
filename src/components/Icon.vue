@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import * as CSS from 'csstype'
+import { Property } from 'csstype'
 import { $mc } from '@/utils/style'
 
 interface Props {
   id: string
-  size: string | number
+  size: Property.Width | Property.Height
   variant: string
 }
 

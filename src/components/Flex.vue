@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import * as CSS from 'csstype'
+import { Property } from 'csstype'
 import { $mc } from '@/utils/style'
 
 interface Props {
-  dir: CSS.FlexDirectionProperty
-  wrap: CSS.FlexWrapProperty
-  gap: CSS.GapProperty<string | number>
-  align: CSS.AlignItemsProperty
-  justify: CSS.JustifyContentProperty
+  dir: Property.FlexDirection
+  wrap: Property.FlexWrap
+  gap: Property.Gap
+  align: Property.AlignItems
+  justify: Property.JustifyContent
 }
 
 const { dir, wrap, gap, align, justify } = withDefaults(defineProps<Props>(), {

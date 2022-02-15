@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import * as CSS from 'csstype'
+import { Property } from 'csstype'
 import { $mc } from '@/utils/style'
 
 interface Props {
-  x?: CSS.OverflowXProperty,
-  y?: CSS.OverflowYProperty,
+  x?: Property.OverflowX,
+  y?: Property.OverflowY,
 }
 
 const { x, y } = withDefaults(defineProps<Props>(), {

@@ -1,14 +1,13 @@
 import { useCssModule } from '@vue/runtime-dom'
 
-export function $mc(...args: (string | boolean)[])
+export function $c(...args: (string | boolean)[])
 {
-  const styles = useCssModule()
   const classes = [ ]
 
   let prevClass = ""
   let shouldPush = false
 
-  for (let argument of args)
+  for (const argument of args)
   {
     if (typeof argument !== 'string')
     {
@@ -20,7 +19,7 @@ export function $mc(...args: (string | boolean)[])
     if (shouldPush)
       classes.push(prevClass)
 
-    prevClass = styles[argument]
+    prevClass = argument
     shouldPush = true
   }
 
@@ -28,4 +27,11 @@ export function $mc(...args: (string | boolean)[])
     classes.push(prevClass)
 
   return classes
+}
+
+export function $mc(...args: (string | boolean)[])
+{
+  const styles = useCssModule()
+  
+  return $c(...args).map(className => styles[className])
 }
