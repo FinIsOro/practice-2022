@@ -4,7 +4,7 @@ import { createApp } from 'vue'
 import configs from '@/configs'
 import router from '@/plugins/router'
 import store from '@/plugins/store'
-import webfontloader from '@/plugins/webfontloader'
+import fa from '@/plugins/fa'
 import App from '@/App.vue'
 
 createApp(App)
@@ -13,5 +13,5 @@ createApp(App)
       .reduce((accumulator: any[], [ _, data ]: any) => [ ...accumulator, ...data ], [ ]),
   })
   .use(store)
-  .use(webfontloader)
+  .use(fa)
   .mount('#app')

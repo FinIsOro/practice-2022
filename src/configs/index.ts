@@ -20,7 +20,7 @@ export default function configs (path: string) {
 }
 
 includer.context(
-  require.context('./', true, /^\.\/(?!index).*\.(js|json)$/i),
+  require.context('./', true, /^\.\/(?!index).*\.(js|ts|json)$/i),
   (data, path) => {
     path = path
       .replace(/^\.\//, '')

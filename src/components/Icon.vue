@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { Property } from 'csstype'
 import { $mc } from '@/utils/style'
+import { toRefs } from 'vue'
 
 interface Props {
   id: string
@@ -8,14 +9,16 @@ interface Props {
   variant: string
 }
 
-const { id, size, variant } = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   variant: '',
 })
+
+const { id, size, variant } = toRefs(props)
 </script>
 
 <template>
   <svg :class="[
-    ...$mc('root'),
+    $mc('root'),
     { [`icon-${variant}`]: variant.length != '' },
   ]">
     <use :href="`${require('@/assets/icons.svg')}#${id}`"></use>

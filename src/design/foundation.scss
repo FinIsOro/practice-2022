@@ -1,2 +1,7 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+
+@import '[silent] from modules/bootstrap';
 @import '[silent] from modules/icons';
-@import '[silent] from modules/colors';
