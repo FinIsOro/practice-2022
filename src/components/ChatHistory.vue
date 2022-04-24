@@ -34,7 +34,3 @@ const { messages } = toRefs(props)
     </FlexItem>
   </Flex>
 </template>
-
-<style lang="scss" module>
-
-</style>

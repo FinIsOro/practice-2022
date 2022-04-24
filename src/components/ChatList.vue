@@ -56,7 +56,3 @@ watch(modelValue, () => {
     </FlexItem>
   </Flex>
 </template>
-
-<style lang="scss" module>
-
-</style>

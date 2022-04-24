@@ -34,16 +34,18 @@ const chatItems = computed(() =>
 
 const activeChat = computed(() => chats.value.find(chat => chat.$id == activeChatId.value))
 
-const activeChatMessages = computed(() =>
-  (activeChat.value?.messages ?? [ ])
+const activeChatMessages = computed(() => {
+  const currentUserId = User.current.$id
+
+  return (activeChat.value?.messages ?? [ ])
     .map(message => ({
       id: message.id,
       content: message.content,
-      side: message.author.$id == User.current.$id
+      side: message.author.$id == currentUserId
         ? 'right'
         : 'left'
     }))
-)
+})
 
 watch(activeChat, () => chScroller.value?.scrollYToEnd())
 

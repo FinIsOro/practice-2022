@@ -42,7 +42,7 @@ export default {
     Chat.insert({
       data: User.all().map(user => ({
         userId: user.$id,
-        messages: Array(faker.datatype.number({ min: 3, max: 50 })).fill(null).map(() => ({
+        messages: Array(50).fill(null).map(() => ({
           authorId: faker.random.arrayElement([ user.$id, User.current.$id ]),
           content: faker.lorem.sentences(),
         }))
