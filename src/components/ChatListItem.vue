@@ -37,7 +37,7 @@ const initiatives = computed(() => name.value.split(' ').slice(0, 2).map(name =>
     <FlexItem grow="0" basis="auto">
       <Avatar :url="avatar" :alt="initiatives" size="3rem" />
     </FlexItem>
-    <div class="text-dots">
+    <div class="text-truncate">
       {{ name }}
     </div>
   </Flex>

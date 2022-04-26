@@ -43,8 +43,8 @@ watch(modelValue, () => {
     gap="0.5rem"
   >
     <FlexItem
-      v-for="item of items"
-      :key="item.id"
+      v-for="(item, index) of items"
+      :key="index"
       basis="auto"
     >
       <ChatListItem

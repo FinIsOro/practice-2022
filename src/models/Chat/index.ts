@@ -18,17 +18,12 @@ export default class Chat extends Model {
     }
   }
 
-  send (content: string) {
-    this.$insert({
+  async send (content: string) {
+    await Message.insert({
       data: {
-        ...this,
-        messages: [
-          {
-            chatId: this.$id,
-            authorId: User.current.$id,
-            content,
-          },
-        ],
+        chatId: this.$id,
+        authorId: User.current.$id,
+        content,
       }
     })
   }

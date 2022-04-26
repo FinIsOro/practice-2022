@@ -18,34 +18,33 @@ const message = ref('')
 const chScroller = ref(null)
 
 const chats = computed(() => Chat.query().withAllRecursive().get())
-
-const chatItems = computed(() =>
+const processedChats = computed(() =>
   chats.value
     .map((chat: any) => ({
       id: chat.$id as string,
       avatar: chat.user.avatar as string,
       name: chat.user.name as string,
     }))
+)
+const filteredChats = computed(() =>
+  processedChats.value
     .filter(chatItem =>
-      chatItem.name.indexOf(search.value) != -1 &&
-      chatItem.id != User.current.chat.$id
+      chatItem.name.indexOf(search.value) != -1
     )
 )
 
 const activeChat = computed(() => chats.value.find(chat => chat.$id == activeChatId.value))
 
-const activeChatMessages = computed(() => {
-  const currentUserId = User.current.$id
-
-  return (activeChat.value?.messages ?? [ ])
+const activeChatMessages = computed(() =>
+  (activeChat.value?.messages ?? [ ])
     .map(message => ({
       id: message.id,
       content: message.content,
-      side: message.author.$id == currentUserId
+      side: message.author.$id == User.current.$id
         ? 'right'
         : 'left'
     }))
-})
+)
 
 watch(activeChat, () => chScroller.value?.scrollYToEnd())
 
@@ -85,7 +84,7 @@ function sendMessage () {
       <div class="card card-body overflow-auto pe-1">
         <Scroller y="scroll">
           <ChatList
-            :items="chatItems"
+            :items="filteredChats"
             v-model="activeChatId"
           />
         </Scroller>

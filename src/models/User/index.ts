@@ -1,5 +1,8 @@
 import { Model } from '@vuex-orm/core'
 import Chat from '@/models/Chat'
+import { computed } from 'vue'
+
+const currentUser = computed(() => User.query().withAllRecursive().first())
 
 export default class User extends Model {
   static entity = 'users'
@@ -7,7 +10,7 @@ export default class User extends Model {
   static primaryKey = 'id'
 
   static get current () {
-    return this.query().withAllRecursive().first()!
+    return currentUser.value!
   }
 
   get initiatives () {
